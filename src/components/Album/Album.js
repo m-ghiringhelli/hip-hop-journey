@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
+import './Album.css';
 
-export default function Album() {
-  const [album, setAlbum] = useState({
-    artist: 'Some Artist',
-    title: 'Album title',
-    released: '5/7/1992',
-  });
+export default function Album({ album }) {
 
   return (
-    <div>
+    <div className="album">
       <p>{album.artist}</p>
       <p>{album.title}</p>
       <p>{album.released}</p>

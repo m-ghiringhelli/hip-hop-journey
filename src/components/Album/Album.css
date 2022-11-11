@@ -1,6 +1,32 @@
 .album {
-  width: 200px;
+  width: 300px;
+  height: 300px;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
+
+.artist-title {
+  font-size: 1.2rem;
+}
+
+.artist-title p:nth-child(1) {
+  font-weight: bold;
+}
+
+.artist-title p:nth-child(2) {
+  font-style: italic;
+}
+
+.year-location {
+  font-size: 0.8rem;
+}
+
+.year-location p:nth-child(1) {
+  font-weight: bold;
+}
+
+.year-location p:nth-child(2) {
+  font-style: italic;
+} 

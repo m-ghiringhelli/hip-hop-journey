@@ -1,0 +1,15 @@
+.albumContainer {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.album:nth-child(2) {
+  height: 400px;
+  width: 400px;
+  font-size: 1.4rem !important;
+  background-color: coral;
+}

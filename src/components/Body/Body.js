@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Album from '../Album/Album';
 import styles from './Body.css';
 import './Body.css';
+import { getAlbums } from '../../services/albums';
 
 export default function Body() {
   const [previousAlbum, setPreviousAlbum] = useState({
@@ -22,6 +23,15 @@ export default function Body() {
     released: 'Next Released',
     location: 'Next Location'
   });
+  const [albums, setAlbums] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getAlbums();
+      setAlbums(data);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className='albumContainer'>

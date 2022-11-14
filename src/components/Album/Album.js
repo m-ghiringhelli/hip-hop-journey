@@ -9,7 +9,7 @@ export default function Album({ className, album }) {
       </div>
       <div className='artist-title'>
         <p>{album.artist}</p>
-        <p>{album.title}</p>
+        <p>{album.album}</p>
       </div>
       <div className='year-location'>
         <p>{album.released}</p>

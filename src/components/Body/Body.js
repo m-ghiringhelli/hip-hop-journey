@@ -5,24 +5,9 @@ import './Body.css';
 import { getAlbums } from '../../services/albums';
 
 export default function Body() {
-  const [previousAlbum, setPreviousAlbum] = useState({
-    title: 'Previous Title',
-    artist: 'Previous Artist',
-    released: 'Previous Released',
-    location: 'Previous Location'
-  });
-  const [currentAlbum, setCurrentAlbum] = useState({
-    title: 'Current Title',
-    artist: 'Current Artist',
-    released: 'Current Released',
-    location: 'Current Location'
-  });
-  const [nextAlbum, setNextAlbum] = useState({
-    title: 'Next Title',
-    artist: 'Next Artist',
-    released: 'Next Released',
-    location: 'Next Location'
-  });
+  const [previousAlbum, setPreviousAlbum] = useState({});
+  const [currentAlbum, setCurrentAlbum] = useState({});
+  const [nextAlbum, setNextAlbum] = useState({});
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
@@ -32,6 +17,14 @@ export default function Body() {
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (albums.length === 3) {
+      albums && setPreviousAlbum(albums[0]);
+      albums && setCurrentAlbum(albums[1]);
+      albums && setNextAlbum(albums[2]);
+    }
+  }, [albums]);
 
   return (
     <div className='albumContainer'>

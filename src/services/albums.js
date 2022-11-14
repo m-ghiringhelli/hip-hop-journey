@@ -12,7 +12,6 @@ export async function getAlbums() {
   albums.push(previousAlbum[0]);
   albums.push(currentAlbum);
   albums.push(nextAlbum[0]);
-  console.log('albums', albums);
   return albums;
 }
 

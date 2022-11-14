@@ -7,9 +7,13 @@
   border: 1px solid black;
 }
 
-.album:nth-child(2) {
+.album:nth-child(3) {
   height: 400px;
   width: 400px;
   font-size: 1.4rem !important;
   background-color: coral;
+}
+
+img:hover {
+  cursor: pointer;
 }

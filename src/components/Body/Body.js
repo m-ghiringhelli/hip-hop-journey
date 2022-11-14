@@ -28,9 +28,11 @@ export default function Body() {
 
   return (
     <div className='albumContainer'>
+      <img src={'./images/left-button.png'} />
       <Album album={previousAlbum} />
       <Album className={styles.currentAlbum} album={currentAlbum} />
       <Album album={nextAlbum} />
+      <img src={'./images/right-button.png'} />
     </div>
   );
 }

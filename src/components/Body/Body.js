@@ -5,18 +5,18 @@ import './Body.css';
 import { getAlbums, getId } from '../../services/albums';
 
 export default function Body() {
+  const [id, setId] = useState();
+  const [albums, setAlbums] = useState([]);
   const [previousAlbum, setPreviousAlbum] = useState({});
   const [currentAlbum, setCurrentAlbum] = useState({});
   const [nextAlbum, setNextAlbum] = useState({});
-  const [albums, setAlbums] = useState([]);
-  const [id, setId] = useState();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const data = await getAlbums();
-      setAlbums(data);
-    };
-    fetchData();
+    // const fetchData = async () => {
+    //   const data = await getAlbums();
+    //   setAlbums(data);
+    // };
+    // fetchData();
     const fetchId = async () => {
       const data = await getId();
       setId(data);
@@ -25,12 +25,21 @@ export default function Body() {
   }, []);
 
   useEffect(() => {
-    if (albums.length === 3) {
-      albums && setPreviousAlbum(albums[0]);
-      albums && setCurrentAlbum(albums[1]);
-      albums && setNextAlbum(albums[2]);
-    }
-  }, [albums]);
+    console.log('useEffect');
+    const fetchAlbums = async () => {
+      const data = await getAlbums(id);
+      setAlbums(data);
+    };
+    fetchAlbums();
+  }, [id]);
+
+  // useEffect(() => {
+  //   if (albums.length === 3) {
+  //     albums && setPreviousAlbum(albums[0]);
+  //     albums && setCurrentAlbum(albums[1]);
+  //     albums && setNextAlbum(albums[2]);
+  //   }
+  // }, [albums]);
 
   return (
     <div className='albumContainer'>

@@ -19,3 +19,9 @@ export async function getById(id) {
   const response = await client.from('albums').select('*').match({ id });
   return checkError(response);
 }
+
+export async function getId() {
+  const { data } = await client.from('albums').select('id').match({ is_current: true });
+  const { id } = data[0];
+  return id;
+}

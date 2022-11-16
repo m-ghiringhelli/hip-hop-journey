@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Album from '../Album/Album';
 import styles from './Body.css';
 import './Body.css';
-import { getAlbums } from '../../services/albums';
+import { getAlbums, getId } from '../../services/albums';
 
 export default function Body() {
   const [previousAlbum, setPreviousAlbum] = useState({});
   const [currentAlbum, setCurrentAlbum] = useState({});
   const [nextAlbum, setNextAlbum] = useState({});
   const [albums, setAlbums] = useState([]);
+  const [id, setId] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,6 +17,11 @@ export default function Body() {
       setAlbums(data);
     };
     fetchData();
+    const fetchId = async () => {
+      const data = await getId();
+      setId(data);
+    };
+    fetchId();
   }, []);
 
   useEffect(() => {

@@ -18,21 +18,18 @@ export async function getAlbums(id) {
     const response = await getById(i);
     albums.push(response[0]);
   }
-  console.log(albums);
   return albums;
 }
 
-// export async function getAlbums() {
-//   let albums = [];
-//   const currentResponse = await client.from('albums').select('*').match({ is_current: true });
-//   const currentAlbum = currentResponse.data[0];
-//   const prevId = currentAlbum.id - 1;
-//   const nextId = currentAlbum.id + 1;
-//   const previousAlbum = await getById(prevId);
-//   const nextAlbum = await getById(nextId);
-//   albums.push(previousAlbum[0]);
-//   albums.push(currentAlbum);
-//   albums.push(nextAlbum[0]);
-//   return albums;
-// }
-
+export async function updateCurrent(id, type) {
+  let response1;
+  let response2;
+  response1 = await client.from('albums').update({ is_current: false }).match({ id });
+  if (type === 'next') {
+    response2 = await client.from('albums').update({ is_current: true }).match({ id: (id + 1) });
+  }
+  if (type === 'prev') {
+    response2 = await client.from('albums').update({ is_current: true }).match({ id: (id - 1) });
+  }
+  return [response1, response2];
+}

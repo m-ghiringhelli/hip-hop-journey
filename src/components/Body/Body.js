@@ -1,53 +1,48 @@
 import React, { useEffect, useState } from 'react';
+import { getAlbums, getId, updateCurrent } from '../../services/albums';
 import Album from '../Album/Album';
-import styles from './Body.css';
 import './Body.css';
-import { getAlbums, getId } from '../../services/albums';
 
 export default function Body() {
-  const [id, setId] = useState();
-  const [albums, setAlbums] = useState([]);
-  const [previousAlbum, setPreviousAlbum] = useState({});
-  const [currentAlbum, setCurrentAlbum] = useState({});
-  const [nextAlbum, setNextAlbum] = useState({});
+  let [id, setId] = useState();
+  let [albums, setAlbums] = useState([]);
+  let [loading, setLoading] = useState(false);
+
+  const fetchId = async () => {
+    const data = await getId();
+    setId(data);
+  };
 
   useEffect(() => {
-    // const fetchData = async () => {
-    //   const data = await getAlbums();
-    //   setAlbums(data);
-    // };
-    // fetchData();
-    const fetchId = async () => {
-      const data = await getId();
-      setId(data);
-    };
     fetchId();
   }, []);
 
   useEffect(() => {
-    console.log('useEffect');
+    setLoading(true);
     const fetchAlbums = async () => {
       const data = await getAlbums(id);
       setAlbums(data);
     };
     fetchAlbums();
+    setLoading(false);
   }, [id]);
 
-  // useEffect(() => {
-  //   if (albums.length === 3) {
-  //     albums && setPreviousAlbum(albums[0]);
-  //     albums && setCurrentAlbum(albums[1]);
-  //     albums && setNextAlbum(albums[2]);
-  //   }
-  // }, [albums]);
+  async function nextAlbum(type) {
+    setLoading(true);
+    await updateCurrent(id, type);
+    fetchId();
+    setLoading(false);
+  }
+
+  if (loading) return <p>loading...</p>;
 
   return (
     <div className='albumContainer'>
-      <img src={'./images/left-button.png'} />
-      <Album album={previousAlbum} />
-      <Album className={styles.currentAlbum} album={currentAlbum} />
-      <Album album={nextAlbum} />
-      <img src={'./images/right-button.png'} />
+      <img src={'./images/left-button.png'} onClick={() => nextAlbum('prev')} />
+      {albums.map((album) => (
+        <Album key={album.id} album={album} />
+      ))}
+      <img src={'./images/right-button.png'} onClick={() => nextAlbum('next')} />
     </div>
   );
 }

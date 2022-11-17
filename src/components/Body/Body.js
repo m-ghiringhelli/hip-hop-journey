@@ -18,20 +18,20 @@ export default function Body() {
   }, []);
 
   useEffect(() => {
-    setLoading(true);
     const fetchAlbums = async () => {
+      setLoading(true);
       const data = await getAlbums(id);
       setAlbums(data);
+      setLoading(false);
     };
     fetchAlbums();
-    setLoading(false);
   }, [id]);
 
   async function nextAlbum(type) {
     setLoading(true);
     await updateCurrent(id, type);
     fetchId();
-    setLoading(false);
+    // setLoading(false);
   }
 
   if (loading) return <p>loading...</p>;

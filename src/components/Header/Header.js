@@ -1,7 +1,11 @@
 import React from 'react';
+import './Header.css';
 
 export default function Header() {
   return (
-    <div>Header</div>
+    <header>
+      <p>hip-hop journey</p>
+
+    </header>
   );
 }

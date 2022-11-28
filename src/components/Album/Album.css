@@ -7,6 +7,16 @@
   justify-content: space-around;
 }
 
+.album button {
+  margin: 0 auto;
+  padding: 10px;
+  width: 30%;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
 .artist-title {
   font-size: 1.2rem;
 }

@@ -21,7 +21,7 @@ export default function Album({ className, album }) {
       </div>
       {album.is_current && (
         <button>
-          farts
+          favorite
         </button>
       )}
     </div>

@@ -1,7 +1,9 @@
 import React from 'react';
 import './Auth.css';
 
-export default function Auth() {
+export default function Auth({ show, setShow }) {
+  if (!show) return null;
+
   return (
     <div className='modal'>
       <div className='modal-content'>
@@ -12,7 +14,9 @@ export default function Auth() {
           This is modal content
         </div>
         <div className='modal-footer'>
-          <button className='close-button'>close</button>
+          <button 
+            className='close-button'
+            onClick={() => setShow(false)}>close</button>
         </div>
       </div>
     </div>

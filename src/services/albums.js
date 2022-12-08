@@ -1,6 +1,6 @@
 /* tslint:disable */
 import { client, checkError } from './client';
-
+// will have to change all this to hit my own backend
 export async function getId() {
   const { data } = await client.from('albums').select('id').match({ is_current: true });
   const { id } = data[0];

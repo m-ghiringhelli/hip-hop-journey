@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { signUp } from '../../services/user.js';
+import { signUp, signIn } from '../../services/user.js';
 import './AuthForm.css';
 
 export default function AuthForm() {
@@ -11,7 +11,8 @@ export default function AuthForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signUp(userInfo);
+    authType === 'signup' && signUp(userInfo);
+    authType === 'signin' && signIn(userInfo);
   };
 
   return (
@@ -19,6 +20,7 @@ export default function AuthForm() {
       className='auth-form'
       onSubmit={handleSubmit}
     >
+      <h1>{authType}</h1>
       <label>
         email:
         <input 
@@ -46,7 +48,7 @@ export default function AuthForm() {
       <button>submit</button>
       <div onClick={() => setAuthType(authType === 'signup' ? 'signin' : 'signup')}>
         {
-          authType === 'signup'
+          authType === 'signin'
             ? <p>Need to make an account?</p>
             : <p>Already have an account?</p>
         }

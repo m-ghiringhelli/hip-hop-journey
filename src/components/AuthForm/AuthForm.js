@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { signUp } from '../../services/user.js';
 import './AuthForm.css';
 
 export default function AuthForm() {
+  const [authType, setAuthType] = useState('signup');
   const [userInfo, setUserInfo] = useState({
     email: '',
     password: ''
   });
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    signUp(userInfo);
   };
 
   return (
@@ -40,6 +44,13 @@ export default function AuthForm() {
         />
       </label>
       <button>submit</button>
+      <div onClick={() => setAuthType(authType === 'signup' ? 'signin' : 'signup')}>
+        {
+          authType === 'signup'
+            ? <p>Need to make an account?</p>
+            : <p>Already have an account?</p>
+        }
+      </div>
     </form>
   );
 }

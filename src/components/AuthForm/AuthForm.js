@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { signUp, signIn } from '../../services/user.js';
+import { signUp, signIn } from '../../services/users.js';
 import './AuthForm.css';
 
 export default function AuthForm() {

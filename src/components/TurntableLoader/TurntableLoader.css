@@ -3,6 +3,7 @@
 }
 
 .turntable-base {
+  position: relative;
   margin: auto;
   border: 1px solid black;
   height: 200px;
@@ -12,6 +13,7 @@
 }
 
 .turntable-platter {
+  position: relative;
   height: 180px;
   width: 180px;
   border-radius: 50%;
@@ -19,42 +21,96 @@
   margin-top: 10px;
   margin-left: 10px;
   background-color: black;
+  transition: transform 5s;
 }
 
 .turntable-ring {
   border-top: 1px solid white;
   border-radius: 50%;
+  transition: transform 5s;
+}
+
+.turntable-platter:hover {
+  transform: rotate(1080deg);
 }
 
 .turntable-ring.first {
   height: 150px;
   width: 150px;
-  margin-top: 14px;
-  margin-left: 14px;
+  margin: 14px auto;
+  /* margin-left: 14px; */
 }
 
 .turntable-ring.second {
   height: 100px;
   width: 100px;
-  margin-top: 24px;
-  margin-left: 24px;
+  margin: 24px auto;
 }
 
 .turntable-label {
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background-color: lightsalmon;
-  margin-top: 26px;
-  margin-left: 26px;
-  border: 1px solid lightsalmon
+  background-color: yellow;
+  margin: 24px auto;
+  border: 1px solid yellow;
+  position: relative;
+}
+
+.turntable-label p {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  font-size: 4px;
+  margin: auto;
 }
 
 .turntable-point {
   height: 4px;
   width: 4px;
-  margin-left: 22px;
-  margin-top: 22px;
+  margin: 22px auto;
   border-radius: 50%;
-  background-color: slategray;
+  background-color: grey;
+}
+
+.turntable-tone-arm {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  transform: rotate(15deg);
+}
+
+.turntable-tone-arm-weight {
+  border-radius: 30%;
+  width: 20px;
+  height: 30px;
+  background-color: white;
+}
+
+.turntable-tone-arm-arm {
+  height: 80px;
+  width: 8px;
+  background-color: white;
+  margin: auto;
+}
+
+.turntable-tone-arm-cartridge {
+  transform: rotate(30deg);
+  position: absolute;
+  right: 19px;
+  bottom: -63px;
+}
+
+.cartridge-arm {
+  height: 40px;
+  width: 8px;
+  background-color: white;
+  margin: auto;
+}
+
+.cartridge-cartridge {
+  height: 30px;
+  width: 16px;
+  background-color: white;
+  margin: auto;
 }

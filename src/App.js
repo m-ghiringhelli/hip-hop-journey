@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 
 function App() {
   const [show, setShow] = useState(false);
+  
 
   return (
     <div className="App">

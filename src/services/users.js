@@ -6,10 +6,13 @@ export const signUp = async ({ email, password }) => {
     mode: 'cors',
     body: JSON.stringify({ email, password }),
   });
-
-  if (!resp.ok) throw new Error('Invalid username or password');
-
-  return resp.json();
+  const data = await resp.json();
+  if (!resp.ok) {
+    console.log('farts', data);
+    throw new Error(data.message);
+  } else {
+    return data;
+  }
 };
 
 export const signIn = async ({ email, password }) => {

@@ -83,3 +83,4 @@ VII. Album Art
   A. Figure out album art API
 VIII. Misc
   A. Create different album card component types?
+  B. Custom CSS loader

@@ -2,7 +2,7 @@ import React from 'react';
 import AuthForm from '../AuthForm/AuthForm';
 import './Auth.css';
 
-export default function Auth({ show, setShow }) {
+export default function Auth({ show, setShow, setUser }) {
   if (!show) return null;
 
   return (
@@ -12,7 +12,7 @@ export default function Auth({ show, setShow }) {
           <h4 className='modal-title'>Modal Title</h4>
         </div>
         <div className='modal-body'>
-          <AuthForm />
+          <AuthForm setUser={setUser} setShow={setShow} />
         </div>
         <div className='modal-footer'>
           <button 

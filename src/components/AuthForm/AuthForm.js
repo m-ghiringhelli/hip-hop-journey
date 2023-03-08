@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { signUp, signIn } from '../../services/users.js';
 import './AuthForm.css';
 
-export default function AuthForm() {
+export default function AuthForm({ setUser, setShow }) {
   const [authType, setAuthType] = useState('signup');
   const [userInfo, setUserInfo] = useState({
     email: '',
@@ -14,14 +14,14 @@ export default function AuthForm() {
     e.preventDefault();
     try {
       if (authType === 'signup') {
-        console.log('here');
-        const resp = await signUp(userInfo);
-        console.log('more farts', resp);
+        await signUp(userInfo);
       }
+      await signIn(userInfo);
+      setUser(userInfo.email);
+      setShow(false);
     } catch (error) {
       setErrorMessage(error.message);
     }
-    authType === 'signin' && signIn(userInfo);
   };
 
   return (

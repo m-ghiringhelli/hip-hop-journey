@@ -23,8 +23,10 @@ export const signIn = async ({ email, password }) => {
     mode: 'cors',
     body: JSON.stringify({ email, password }),
   });
-
-  if (!resp.ok) throw new Error('trouble signing in');
-
-  return resp.json();
+  const data = await resp.json();
+  if (!resp.ok) {
+    throw new Error(data.message);
+  } else {
+    return data;
+  }
 };
